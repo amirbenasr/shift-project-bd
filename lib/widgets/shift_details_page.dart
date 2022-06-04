@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
+import '../models/shift_response_model.dart';
 import 'shift_custom_icon.dart';
 import '../styles/colors.dart';
 import '../styles/font.dart';
 
 class ShiftDetailsPage extends StatefulWidget {
-  const ShiftDetailsPage({Key? key}) : super(key: key);
+  const ShiftDetailsPage({Key? key, this.shift}) : super(key: key);
+  final Shift? shift;
 
   @override
   State<ShiftDetailsPage> createState() => _ShiftDetailsPageState();
@@ -65,7 +67,7 @@ class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
                   height: 8,
                 ),
                 Center(
-                  child: Text("Bistro Sous le Fort",
+                  child: Text(widget.shift!.company!,
                       style: TextStyle(
                         fontSize: 22,
                       )),

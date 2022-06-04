@@ -68,8 +68,9 @@ class Shift {
   String formatDate(DateTime date) => DateFormat('hh:mm').format(date);
 // console.log(new Intl.DateTimeFormat('fr-FR', { dateStyle: 'full', timeStyle: 'long' }).format(date));
 
-  String formatTofrench(DateTime date) =>
-      DateFormat('EEEE - dd - MMM', 'fr-FR').format(date);
+  String formatTofrench(DateTime date) => (this.status == "waiting")
+      ? DateFormat('EEEE - dd - MMM', 'fr-FR').format(date)
+      : "Aujourd'hui";
 
   factory Shift.fromJson(Map<String, dynamic> json) => Shift(
         id: json["id"],

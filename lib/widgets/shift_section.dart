@@ -32,7 +32,6 @@ class ShiftSection extends StatelessWidget {
             shrinkWrap: true,
             itemCount: shifts!.length,
             itemBuilder: ((context, index) => ShiftCard(
-                  format: this.formatDate,
                   shift: shifts![index],
                 ))),
       ],

@@ -6,9 +6,11 @@ import '../styles/font.dart';
 import 'shift_details_page.dart';
 
 class ShiftCard extends StatelessWidget {
-  const ShiftCard({Key? key, this.shift, this.format}) : super(key: key);
+  const ShiftCard({
+    Key? key,
+    this.shift,
+  }) : super(key: key);
   final Shift? shift;
-  final bool? format;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -19,8 +21,10 @@ class ShiftCard extends StatelessWidget {
       color: AppColors().shiftCardColor,
       child: ListTile(
         onTap: () {
-          Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => ShiftDetailsPage()));
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => ShiftDetailsPage(
+                    shift: shift,
+                  )));
         },
         contentPadding: EdgeInsets.all(18),
         title: Text(shift!.company!, style: AppStyle().tileHeader),
@@ -28,14 +32,13 @@ class ShiftCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: (this.format!)
-                  ? Text(shift!.formatTofrench(shift!.startAt!))
-                  : Text(
-                      "Aujourd'hui".toUpperCase(),
-                      style: AppStyle().subtitleHeader,
-                    ),
-            ),
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Text(
+                    shift!.formatTofrench(shift!.startAt!).toUpperCase(),
+                    style: shift!.status == "waiting"
+                        ? AppStyle().subtitleHeader.copyWith(
+                            color: AppColors().chipsetTextColor, fontSize: 14)
+                        : AppStyle().subtitleHeader)),
 
             //créneaux
             Row(
