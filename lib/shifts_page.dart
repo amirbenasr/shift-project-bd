@@ -14,6 +14,74 @@ class _ShiftPageState extends State<ShiftPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24.0),
+          ),
+          margin: EdgeInsets.all(16),
+          child: Container(
+            height: 58,
+            decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              // color: Colors.white,
+            ),
+            child: Row(children: [
+              SizedBox(
+                width: 2,
+              ),
+              //search button
+              Expanded(
+                child: OutlinedButton.icon(
+                    style: OutlinedButton.styleFrom(
+                        padding: EdgeInsets.all(12),
+                        shape: StadiumBorder(),
+                        backgroundColor: Color(0xff53c5cd)),
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.search_sharp,
+                      color: Colors.white,
+                    ),
+                    label: Text(
+                      "Shift Offerts",
+                      style: TextStyle(color: Colors.white),
+                    )),
+              ),
+              SizedBox(
+                width: 2,
+              ),
+              //invoice button
+              Material(
+                color: AppColors().mainBackground,
+                shape: CircleBorder(),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.file_copy_rounded,
+                  ),
+                  iconSize: 24,
+                ),
+              ),
+              //profile button
+              SizedBox(
+                width: 2,
+              ),
+              Material(
+                color: AppColors().mainBackground,
+                shape: CircleBorder(),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.person_outline,
+                  ),
+                  iconSize: 24,
+                ),
+              ),
+              SizedBox(
+                width: 2,
+              ),
+            ]),
+          ),
+        ),
         backgroundColor: AppColors().mainBackground,
         body: SingleChildScrollView(
           child: Padding(
