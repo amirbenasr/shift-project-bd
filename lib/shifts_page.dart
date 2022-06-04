@@ -26,10 +26,10 @@ class _ShiftPageState extends State<ShiftPage> {
                   "Shift offerts",
                   style: AppStyle().mainHeader,
                 ),
-                LastMinuteSection(
+                ShiftSection(
                   title: "Dernière MINUTE",
                 ),
-                LastMinuteSection(
+                ShiftSection(
                   title: "shifts à venir",
                 )
               ],
@@ -41,9 +41,9 @@ class _ShiftPageState extends State<ShiftPage> {
   }
 }
 
-class LastMinuteSection extends StatelessWidget {
+class ShiftSection extends StatelessWidget {
   final String? title;
-  const LastMinuteSection({
+  const ShiftSection({
     Key? key,
     this.title,
   }) : super(key: key);
