@@ -133,19 +133,19 @@ class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
                     ),
                     ShiftCustomIcon(
                       icon: Icon(Icons.attach_money),
-                      text: "48 Rue blablabla",
+                      text: "Bonus au travailleur: +${widget.shift!.bonus}\$/H",
                     ),
                     ShiftCustomIcon(
                       icon: Icon(Icons.pause_outlined),
-                      text: "48 Rue blablabla",
+                      text: "Pause de 30 minutes",
                     ),
                     ShiftCustomIcon(
                       icon: Icon(Icons.local_parking_outlined),
-                      text: "48 Rue blablabla",
+                      text: "Stationnement gratuit ",
                     ),
                     ShiftCustomIcon(
                       icon: Icon(Icons.emoji_people),
-                      text: "48 Rue blablabla",
+                      text: "Pantalon noir, chemise noir",
                     ),
                   ],
                 ),
@@ -158,8 +158,11 @@ class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
                       "Responsable".toUpperCase(),
                       style: AppStyle().shiftSection,
                     ),
-                    Text(
-                      "Gregorie Kovalaks",
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Text(
+                        "Gregorie Kovalaks",
+                      ),
                     ),
                   ],
                 )
