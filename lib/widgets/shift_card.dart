@@ -15,7 +15,7 @@ class ShiftCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: const RoundedRectangleBorder(
-          borderRadius: const BorderRadius.all(Radius.circular(8))),
+          borderRadius: BorderRadius.all(Radius.circular(8))),
       elevation: 3.0,
       margin: const EdgeInsets.only(bottom: 12),
       color: AppColors().shiftCardColor,
