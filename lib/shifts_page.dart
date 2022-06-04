@@ -234,7 +234,7 @@ class ShiftCard extends StatelessWidget {
                 ),
                 Spacer(),
                 Text(
-                  "16:00 - 22:00",
+                  "${shift!.formatDate(shift!.startAt!)} - ${shift!.formatDate(shift!.endAt!)}",
                   style: TextStyle(color: Colors.red),
                 )
               ],

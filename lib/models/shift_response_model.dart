@@ -3,6 +3,7 @@
 //     final shiftResponse = shiftResponseFromJson(jsonString);
 
 import 'dart:convert';
+import 'package:intl/intl.dart';
 
 ShiftResponse shiftResponseFromJson(String str) =>
     ShiftResponse.fromJson(json.decode(str));
@@ -64,6 +65,7 @@ class Shift {
   double? latitude;
   double? longitude;
 
+  String formatDate(DateTime date) => DateFormat('hh:mm').format(date);
   factory Shift.fromJson(Map<String, dynamic> json) => Shift(
         id: json["id"],
         status: json["status"],
