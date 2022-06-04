@@ -17,7 +17,7 @@ class ShiftCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8))),
       elevation: 3.0,
-      margin: EdgeInsets.only(bottom: 12),
+      margin: EdgeInsets.only(bottom: 12.0),
       color: AppColors().shiftCardColor,
       child: ListTile(
         onTap: () {
