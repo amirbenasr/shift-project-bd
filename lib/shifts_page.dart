@@ -218,6 +218,7 @@ class ShiftCard extends StatelessWidget {
 
             //créneaux
             Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Expanded(
                   flex: 1,
@@ -240,6 +241,7 @@ class ShiftCard extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       RichText(
                         text: TextSpan(
