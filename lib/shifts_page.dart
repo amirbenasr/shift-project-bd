@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shift_project/styles/colors.dart';
 import 'package:shift_project/styles/font.dart';
 
+import 'styles/shift_details_page.dart';
+
 class ShiftPage extends StatefulWidget {
   const ShiftPage({Key? key}) : super(key: key);
 
@@ -150,6 +152,10 @@ class ShiftCard extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 12),
       color: AppColors().shiftCardColor,
       child: ListTile(
+        onTap: () {
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => ShiftDetailsPage()));
+        },
         contentPadding: EdgeInsets.all(18),
         title: Text("Bistro Sous le Fort", style: AppStyle().tileHeader),
         subtitle: Column(
