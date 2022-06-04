@@ -6,7 +6,7 @@ import 'package:shift_project/styles/colors.dart';
 import 'package:shift_project/styles/font.dart';
 
 import 'models/shift_response_model.dart';
-import 'styles/shift_details_page.dart';
+import 'widgets/shift_details_page.dart';
 import 'widgets/shift_card.dart';
 import 'widgets/shift_section.dart';
 

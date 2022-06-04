@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/shift_custom_icon.dart';
-import 'colors.dart';
-import 'font.dart';
+import 'shift_custom_icon.dart';
+import '../styles/colors.dart';
+import '../styles/font.dart';
 
 class ShiftDetailsPage extends StatefulWidget {
   const ShiftDetailsPage({Key? key}) : super(key: key);
