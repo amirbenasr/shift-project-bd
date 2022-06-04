@@ -14,6 +14,18 @@ class ShiftDetailsPage extends StatefulWidget {
 }
 
 class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
+  String? _address;
+  @override
+  void initState() {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      setState(() {
+        widget.shift!.getLocation().then((value) => _address = value);
+      });
+    });
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,36 +88,30 @@ class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
                   height: 20,
                 ),
                 Text(
-                  "AUJOURD'HUI",
+                  widget.shift!.formatTofrench(widget.shift!.startAt!),
                 ),
                 SizedBox(
                   height: 8,
                 ),
                 //créneaux
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Chip(
-                        label: Text(
-                          "Cuisinier",
-                          style: TextStyle(color: AppColors().chipsetTextColor),
-                        ),
-                        visualDensity: VisualDensity.comfortable),
-                    SizedBox(
-                      width: 5,
-                    ),
                     RichText(
                       text: TextSpan(
-                          text: "14\$ / H ",
+                          text:
+                              "${double.parse(widget.shift!.buyPrice!.toString()).round()}\$ / H ",
                           style: TextStyle(color: Colors.black),
                           children: [
-                            TextSpan(
-                                text: "+ 14\$ / H ",
-                                style: TextStyle(color: Colors.green))
+                            if (widget.shift!.bonus! != 0)
+                              TextSpan(
+                                  text: "+ ${widget.shift!.bonus!}\$ / H ",
+                                  style: TextStyle(color: Colors.green))
                           ]),
                     ),
                     Spacer(),
                     Text(
-                      "16:00 - 22:00",
+                      "${widget.shift!.formatDate(widget.shift!.startAt!)} - ${widget.shift!.formatDate(widget.shift!.endAt!)}",
                       style: TextStyle(color: Colors.red),
                     )
                   ],
@@ -123,7 +129,7 @@ class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
                   children: [
                     ShiftCustomIcon(
                       icon: Icon(Icons.location_on_outlined),
-                      text: "48 Rue blablabla",
+                      text: "${_address}",
                     ),
                     ShiftCustomIcon(
                       icon: Icon(Icons.attach_money),
