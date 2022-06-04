@@ -23,12 +23,12 @@ class ShiftSection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 18.0, bottom: 8),
           child: Text(
-            this.title!.toUpperCase(),
+            title!.toUpperCase(),
             style: AppStyle().shiftSection,
           ),
         ),
         ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: shifts!.length,
             itemBuilder: ((context, index) => ShiftCard(

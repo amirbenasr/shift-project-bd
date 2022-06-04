@@ -4,7 +4,6 @@
 
 import 'dart:convert';
 import 'package:intl/intl.dart';
-import 'package:geocode/geocode.dart';
 import 'package:geocoding/geocoding.dart';
 
 ShiftResponse shiftResponseFromJson(String str) =>
@@ -70,22 +69,20 @@ class Shift {
   String formatDate(DateTime date) => DateFormat('HH:mm').format(date);
 // console.log(new Intl.DateTimeFormat('fr-FR', { dateStyle: 'full', timeStyle: 'long' }).format(date));
 
-  String formatTofrench(DateTime date) => (this.status == "waiting")
+  String formatTofrench(DateTime date) => (status == "waiting")
       ? DateFormat('EEEE - dd - MMM', 'fr-FR').format(date)
       : "Aujourd'hui";
 
   Future<String> getLocation() async {
     List<Placemark> placemarks =
-        await placemarkFromCoordinates(this.latitude!, this.longitude!);
+        await placemarkFromCoordinates(latitude!, longitude!);
     Placemark? place = placemarks.first;
 
-    return (place == null)
-        ? "n/a"
-        : place.street! +
-            "," +
-            place.administrativeArea! +
-            "," +
-            place.postalCode!;
+    return place.street! +
+        "," +
+        place.administrativeArea! +
+        "," +
+        place.postalCode!;
   }
 
   factory Shift.fromJson(Map<String, dynamic> json) => Shift(

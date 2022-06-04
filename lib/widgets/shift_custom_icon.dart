@@ -22,7 +22,7 @@ class ShiftCustomIcon extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 // iconSize: 24,
                 onPressed: () {},
-                icon: this.icon!,
+                icon: icon!,
               )),
           Text("$text")
         ],

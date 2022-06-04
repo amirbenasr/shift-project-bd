@@ -22,7 +22,6 @@ class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
         widget.shift!.getLocation().then((value) => _address = value);
       });
     });
-    // TODO: implement initState
     super.initState();
   }
 
@@ -30,13 +29,13 @@ class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Container(
-        margin: EdgeInsets.all(16),
+        margin: const EdgeInsets.all(16),
         child: OutlinedButton(
-          child: Text("Postuler", style: TextStyle(color: Colors.white)),
+          child: const Text("Postuler", style: TextStyle(color: Colors.white)),
           style: OutlinedButton.styleFrom(
-              padding: EdgeInsets.all(12),
-              shape: StadiumBorder(),
-              backgroundColor: Color(0xff53c5cd)),
+              padding: const EdgeInsets.all(12),
+              shape: const StadiumBorder(),
+              backgroundColor: const Color(0xff53c5cd)),
           onPressed: () {},
         ),
       ),
@@ -45,9 +44,9 @@ class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
             padding: const EdgeInsets.all(8.0),
             child: Material(
               color: Colors.black,
-              shape: CircleBorder(),
+              shape: const CircleBorder(),
               child: IconButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_back_outlined,
                   color: Colors.white,
                 ),
@@ -63,30 +62,30 @@ class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 //shift details header
 
-                Center(
+                const Center(
                   child: CircleAvatar(
                     backgroundImage: NetworkImage(
                         "https://res.cloudinary.com/tf-lab/image/upload/w_600,h_337,c_fill,g_auto:subject,q_auto,f_auto/restaurant/dfdd0f5e-7ea7-4e99-9ae3-05b5a2f77f51/091d22d1-028e-435c-9007-a25c5366144b.png"),
                     radius: 42,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Center(
                   child: Text(widget.shift!.company!,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 22,
                       )),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Text(
@@ -95,7 +94,7 @@ class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
                       ? null
                       : AppStyle().subtitleHeader,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 //créneaux
@@ -114,35 +113,32 @@ class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
                           ],
                         ),
                         visualDensity: VisualDensity.comfortable),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                     RichText(
                       text: TextSpan(
                           text:
                               "${double.parse(widget.shift!.buyPrice!.toString()).round()}\$ / H ",
-                          style: TextStyle(color: Colors.black),
+                          style: const TextStyle(color: Colors.black),
                           children: [
                             if (widget.shift!.bonus! != 0)
                               TextSpan(
                                   text: "+ ${widget.shift!.bonus!}\$ / H ",
-                                  style: TextStyle(color: Colors.green))
+                                  style: const TextStyle(color: Colors.green))
                           ]),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Text(
                       "${widget.shift!.formatDate(widget.shift!.startAt!)} - ${widget.shift!.formatDate(widget.shift!.endAt!)}",
                       style: (widget.shift!.status == "waiting")
                           ? null
-                          : TextStyle(color: Colors.red),
+                          : const TextStyle(color: Colors.red),
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
-                ),
-                Row(
-                  children: [],
                 ),
 
                 //shift details section
@@ -150,22 +146,22 @@ class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ShiftCustomIcon(
-                      icon: Icon(Icons.location_on_outlined),
-                      text: "${_address}",
+                      icon: const Icon(Icons.location_on_outlined),
+                      text: "$_address",
                     ),
                     ShiftCustomIcon(
-                      icon: Icon(Icons.attach_money),
+                      icon: const Icon(Icons.attach_money),
                       text: "Bonus au travailleur: +${widget.shift!.bonus}\$/H",
                     ),
-                    ShiftCustomIcon(
+                    const ShiftCustomIcon(
                       icon: Icon(Icons.pause_outlined),
                       text: "Pause de 30 minutes",
                     ),
-                    ShiftCustomIcon(
+                    const ShiftCustomIcon(
                       icon: Icon(Icons.local_parking_outlined),
                       text: "Stationnement gratuit ",
                     ),
-                    ShiftCustomIcon(
+                    const ShiftCustomIcon(
                       icon: Icon(Icons.emoji_people),
                       text: "Pantalon noir, chemise noir",
                     ),
@@ -180,8 +176,8 @@ class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
                       "Responsable".toUpperCase(),
                       style: AppStyle().shiftSection,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 8.0),
                       child: Text(
                         "Gregorie Kovalaks\t",
                       ),

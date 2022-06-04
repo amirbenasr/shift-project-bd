@@ -14,10 +14,10 @@ class ShiftCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8))),
+      shape: const RoundedRectangleBorder(
+          borderRadius: const BorderRadius.all(Radius.circular(8))),
       elevation: 3.0,
-      margin: EdgeInsets.only(bottom: 12),
+      margin: const EdgeInsets.only(bottom: 12),
       color: AppColors().shiftCardColor,
       child: ListTile(
         onTap: () {
@@ -26,7 +26,7 @@ class ShiftCard extends StatelessWidget {
                     shift: shift,
                   )));
         },
-        contentPadding: EdgeInsets.all(18),
+        contentPadding: const EdgeInsets.all(18),
         title: Text(shift!.company!, style: AppStyle().tileHeader),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,7 +59,7 @@ class ShiftCard extends StatelessWidget {
                       ),
                       visualDensity: VisualDensity.comfortable),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
                 Expanded(
@@ -71,20 +71,20 @@ class ShiftCard extends StatelessWidget {
                         text: TextSpan(
                             text:
                                 "${double.parse(shift!.buyPrice!.toString()).round()}\$ / H ",
-                            style: TextStyle(color: Colors.black),
+                            style: const TextStyle(color: Colors.black),
                             children: [
                               if (shift!.bonus! != 0)
                                 TextSpan(
                                     text: "+ ${shift!.bonus!}\$ / H ",
-                                    style: TextStyle(color: Colors.green))
+                                    style: const TextStyle(color: Colors.green))
                             ]),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Text(
                         "${shift!.formatDate(shift!.startAt!)} - ${shift!.formatDate(shift!.endAt!)}",
                         style: (shift!.status! == "waiting")
                             ? AppStyle().thirdLineHeader
-                            : TextStyle(color: Colors.red),
+                            : const TextStyle(color: Colors.red),
                       )
                     ],
                   ),

@@ -6,8 +6,6 @@ import 'package:shift_project/styles/colors.dart';
 import 'package:shift_project/styles/font.dart';
 
 import '../models/shift_response_model.dart';
-import 'shift_details_page.dart';
-import '../widgets/shift_card.dart';
 import '../widgets/shift_section.dart';
 
 class ShiftPage extends StatefulWidget {
@@ -55,65 +53,65 @@ class _ShiftPageState extends State<ShiftPage> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24.0),
           ),
-          margin: EdgeInsets.all(16),
+          margin: const EdgeInsets.all(16),
           child: Container(
             height: 58,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.rectangle,
               // color: Colors.white,
             ),
             child: Row(children: [
-              SizedBox(
+              const SizedBox(
                 width: 2,
               ),
               //search button
               Expanded(
                 child: OutlinedButton.icon(
                     style: OutlinedButton.styleFrom(
-                        padding: EdgeInsets.all(12),
-                        shape: StadiumBorder(),
-                        backgroundColor: Color(0xff53c5cd)),
+                        padding: const EdgeInsets.all(12),
+                        shape: const StadiumBorder(),
+                        backgroundColor: const Color(0xff53c5cd)),
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.search_sharp,
                       color: Colors.white,
                     ),
-                    label: Text(
+                    label: const Text(
                       "Shifts Offerts",
                       style: TextStyle(color: Colors.white),
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 2,
               ),
               //invoice button
               Material(
                 color: AppColors().mainBackground,
-                shape: CircleBorder(),
+                shape: const CircleBorder(),
                 child: IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.file_copy_rounded,
                   ),
                   iconSize: 24,
                 ),
               ),
               //profile button
-              SizedBox(
+              const SizedBox(
                 width: 2,
               ),
               Material(
                 color: AppColors().mainBackground,
-                shape: CircleBorder(),
+                shape: const CircleBorder(),
                 child: IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.person_outline,
                   ),
                   iconSize: 24,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 2,
               ),
             ]),
