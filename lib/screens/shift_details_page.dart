@@ -183,7 +183,7 @@ class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0),
                       child: Text(
-                        "Gregorie Kovalaks",
+                        "Gregorie Kovalaks\t",
                       ),
                     ),
                   ],
