@@ -16,12 +16,12 @@ class ShiftResponse {
     this.meta,
   });
 
-  List<Datum>? data;
+  List<Shift>? data;
   Links? links;
   Meta? meta;
 
   factory ShiftResponse.fromJson(Map<String, dynamic> json) => ShiftResponse(
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        data: List<Shift>.from(json["data"].map((x) => Shift.fromJson(x))),
         links: Links.fromJson(json["links"]),
         meta: Meta.fromJson(json["meta"]),
       );
@@ -33,8 +33,8 @@ class ShiftResponse {
       };
 }
 
-class Datum {
-  Datum({
+class Shift {
+  Shift({
     this.id,
     this.status,
     this.startAt,
@@ -64,7 +64,7 @@ class Datum {
   double? latitude;
   double? longitude;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory Shift.fromJson(Map<String, dynamic> json) => Shift(
         id: json["id"],
         status: json["status"],
         startAt: DateTime.parse(json["start_at"]),

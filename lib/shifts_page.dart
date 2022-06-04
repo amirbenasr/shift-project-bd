@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shift_project/styles/colors.dart';
 import 'package:shift_project/styles/font.dart';
 
+import 'models/shift_response_model.dart';
 import 'styles/shift_details_page.dart';
 
 class ShiftPage extends StatefulWidget {
@@ -12,9 +16,32 @@ class ShiftPage extends StatefulWidget {
 }
 
 class _ShiftPageState extends State<ShiftPage> {
+  ShiftResponse shiftResponse = ShiftResponse();
+  List<Shift> acceptedShifts = [];
+  List<Shift> incomingShifts = [];
+
+  Future<ShiftResponse> _loadShiftAsset() async {
+    String jsonContent =
+        await rootBundle.loadString('assets/offered_shifts.json');
+
+    return ShiftResponse.fromJson(json.decode(jsonContent));
+  }
+
   @override
   void initState() {
-    // TODO: implement initState
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      setState(() {
+        _loadShiftAsset().then((value) {
+          acceptedShifts = value.data!
+              .where((element) => element.status == "accepted")
+              .toList();
+          incomingShifts = value.data!
+              .where((element) => element.status == "waiting")
+              .toList();
+        });
+      });
+    });
+//load json resposne
     super.initState();
   }
 
@@ -104,9 +131,11 @@ class _ShiftPageState extends State<ShiftPage> {
                 ),
                 ShiftSection(
                   title: "Dernière MINUTE",
+                  shifts: acceptedShifts,
                 ),
                 ShiftSection(
                   title: "shifts à venir",
+                  shifts: incomingShifts,
                 )
               ],
             ),
@@ -119,9 +148,11 @@ class _ShiftPageState extends State<ShiftPage> {
 
 class ShiftSection extends StatelessWidget {
   final String? title;
+  final List<Shift>? shifts;
   const ShiftSection({
     Key? key,
     this.title,
+    this.shifts,
   }) : super(key: key);
 
   @override
@@ -139,16 +170,18 @@ class ShiftSection extends StatelessWidget {
         ListView.builder(
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: 2,
-            itemBuilder: ((context, index) => ShiftCard())),
+            itemCount: shifts!.length,
+            itemBuilder: ((context, index) => ShiftCard(
+                  shift: shifts![index],
+                ))),
       ],
     );
   }
 }
 
 class ShiftCard extends StatelessWidget {
-  const ShiftCard({Key? key}) : super(key: key);
-
+  const ShiftCard({Key? key, this.shift}) : super(key: key);
+  final Shift? shift;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -163,7 +196,7 @@ class ShiftCard extends StatelessWidget {
               MaterialPageRoute(builder: (context) => ShiftDetailsPage()));
         },
         contentPadding: EdgeInsets.all(18),
-        title: Text("Bistro Sous le Fort", style: AppStyle().tileHeader),
+        title: Text(shift!.company!, style: AppStyle().tileHeader),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -189,12 +222,14 @@ class ShiftCard extends StatelessWidget {
                 ),
                 RichText(
                   text: TextSpan(
-                      text: "14\$ / H ",
+                      text:
+                          "${double.parse(shift!.buyPrice!.toString()).round()}\$ / H ",
                       style: TextStyle(color: Colors.black),
                       children: [
-                        TextSpan(
-                            text: "+ 14\$ / H ",
-                            style: TextStyle(color: Colors.green))
+                        if (shift!.bonus! != 0)
+                          TextSpan(
+                              text: "+ ${shift!.bonus!}\$ / H ",
+                              style: TextStyle(color: Colors.green))
                       ]),
                 ),
                 Spacer(),
