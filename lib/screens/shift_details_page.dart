@@ -91,6 +91,9 @@ class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
                 ),
                 Text(
                   widget.shift!.formatTofrench(widget.shift!.startAt!),
+                  style: (widget.shift!.status == "waiting")
+                      ? null
+                      : AppStyle().subtitleHeader,
                 ),
                 SizedBox(
                   height: 8,
