@@ -82,7 +82,9 @@ class ShiftCard extends StatelessWidget {
                       Spacer(),
                       Text(
                         "${shift!.formatDate(shift!.startAt!)} - ${shift!.formatDate(shift!.endAt!)}",
-                        style: TextStyle(color: Colors.red),
+                        style: (shift!.status! == "waiting")
+                            ? AppStyle().thirdLineHeader
+                            : TextStyle(color: Colors.red),
                       )
                     ],
                   ),
