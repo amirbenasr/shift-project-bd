@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shift_project/shifts_page.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
+  initializeDateFormatting('fr-FR');
   runApp(const MyApp());
 }
 

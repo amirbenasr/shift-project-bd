@@ -66,6 +66,11 @@ class Shift {
   double? longitude;
 
   String formatDate(DateTime date) => DateFormat('hh:mm').format(date);
+// console.log(new Intl.DateTimeFormat('fr-FR', { dateStyle: 'full', timeStyle: 'long' }).format(date));
+
+  String formatTofrench(DateTime date) =>
+      DateFormat('EEEE - dd - MMM', 'fr-FR').format(date);
+
   factory Shift.fromJson(Map<String, dynamic> json) => Shift(
         id: json["id"],
         status: json["status"],

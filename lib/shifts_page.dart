@@ -132,10 +132,12 @@ class _ShiftPageState extends State<ShiftPage> {
                 ShiftSection(
                   title: "Dernière MINUTE",
                   shifts: acceptedShifts,
+                  formatDate: false,
                 ),
                 ShiftSection(
                   title: "shifts à venir",
                   shifts: incomingShifts,
+                  formatDate: true,
                 )
               ],
             ),
@@ -149,10 +151,12 @@ class _ShiftPageState extends State<ShiftPage> {
 class ShiftSection extends StatelessWidget {
   final String? title;
   final List<Shift>? shifts;
+  final bool? formatDate;
   const ShiftSection({
     Key? key,
     this.title,
     this.shifts,
+    this.formatDate,
   }) : super(key: key);
 
   @override
@@ -172,6 +176,7 @@ class ShiftSection extends StatelessWidget {
             shrinkWrap: true,
             itemCount: shifts!.length,
             itemBuilder: ((context, index) => ShiftCard(
+                  format: this.formatDate,
                   shift: shifts![index],
                 ))),
       ],
@@ -180,8 +185,9 @@ class ShiftSection extends StatelessWidget {
 }
 
 class ShiftCard extends StatelessWidget {
-  const ShiftCard({Key? key, this.shift}) : super(key: key);
+  const ShiftCard({Key? key, this.shift, this.format}) : super(key: key);
   final Shift? shift;
+  final bool? format;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -202,10 +208,12 @@ class ShiftCard extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Text(
-                "Aujourd'hui".toUpperCase(),
-                style: AppStyle().subtitleHeader,
-              ),
+              child: (this.format!)
+                  ? Text(shift!.formatTofrench(shift!.startAt!))
+                  : Text(
+                      "Aujourd'hui".toUpperCase(),
+                      style: AppStyle().subtitleHeader,
+                    ),
             ),
 
             //créneaux
