@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/shift_response_model.dart';
-import 'shift_custom_icon.dart';
+import '../widgets/shift_custom_icon.dart';
 import '../styles/colors.dart';
 import '../styles/font.dart';
 

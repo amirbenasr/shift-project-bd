@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/shift_response_model.dart';
 import '../styles/colors.dart';
 import '../styles/font.dart';
-import 'shift_details_page.dart';
+import '../screens/shift_details_page.dart';
 
 class ShiftCard extends StatelessWidget {
   const ShiftCard({

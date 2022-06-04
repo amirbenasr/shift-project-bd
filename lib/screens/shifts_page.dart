@@ -5,10 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:shift_project/styles/colors.dart';
 import 'package:shift_project/styles/font.dart';
 
-import 'models/shift_response_model.dart';
-import 'widgets/shift_details_page.dart';
-import 'widgets/shift_card.dart';
-import 'widgets/shift_section.dart';
+import '../models/shift_response_model.dart';
+import 'shift_details_page.dart';
+import '../widgets/shift_card.dart';
+import '../widgets/shift_section.dart';
 
 class ShiftPage extends StatefulWidget {
   const ShiftPage({Key? key}) : super(key: key);
