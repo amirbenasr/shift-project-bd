@@ -67,7 +67,7 @@ class Shift {
   double? latitude;
   double? longitude;
 
-  String formatDate(DateTime date) => DateFormat('hh:mm').format(date);
+  String formatDate(DateTime date) => DateFormat('HH:mm').format(date);
 // console.log(new Intl.DateTimeFormat('fr-FR', { dateStyle: 'full', timeStyle: 'long' }).format(date));
 
   String formatTofrench(DateTime date) => (this.status == "waiting")

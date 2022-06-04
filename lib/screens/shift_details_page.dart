@@ -72,6 +72,8 @@ class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
 
                 Center(
                   child: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                        "https://res.cloudinary.com/tf-lab/image/upload/w_600,h_337,c_fill,g_auto:subject,q_auto,f_auto/restaurant/dfdd0f5e-7ea7-4e99-9ae3-05b5a2f77f51/091d22d1-028e-435c-9007-a25c5366144b.png"),
                     radius: 42,
                   ),
                 ),
@@ -97,6 +99,21 @@ class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
+                    Chip(
+                        label: Wrap(
+                          children: [
+                            Text(
+                              "${widget.shift!.postName}",
+                              overflow: TextOverflow.fade,
+                              style: TextStyle(
+                                  color: AppColors().chipsetTextColor),
+                            ),
+                          ],
+                        ),
+                        visualDensity: VisualDensity.comfortable),
+                    SizedBox(
+                      width: 5,
+                    ),
                     RichText(
                       text: TextSpan(
                           text:
