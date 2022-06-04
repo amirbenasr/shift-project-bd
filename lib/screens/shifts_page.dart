@@ -79,7 +79,7 @@ class _ShiftPageState extends State<ShiftPage> {
                       color: Colors.white,
                     ),
                     label: Text(
-                      "Shift Offerts",
+                      "Shifts Offerts",
                       style: TextStyle(color: Colors.white),
                     )),
               ),
@@ -128,7 +128,7 @@ class _ShiftPageState extends State<ShiftPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Shift offerts",
+                  "Shifts offerts",
                   style: AppStyle().mainHeader,
                 ),
                 ShiftSection(
