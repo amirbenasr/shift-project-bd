@@ -13,6 +13,12 @@ class ShiftPage extends StatefulWidget {
 
 class _ShiftPageState extends State<ShiftPage> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
