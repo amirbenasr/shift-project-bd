@@ -132,7 +132,9 @@ class _ShiftDetailsPageState extends State<ShiftDetailsPage> {
                     Spacer(),
                     Text(
                       "${widget.shift!.formatDate(widget.shift!.startAt!)} - ${widget.shift!.formatDate(widget.shift!.endAt!)}",
-                      style: TextStyle(color: Colors.red),
+                      style: (widget.shift!.status == "waiting")
+                          ? null
+                          : TextStyle(color: Colors.red),
                     )
                   ],
                 ),
