@@ -211,31 +211,47 @@ class ShiftCard extends StatelessWidget {
             //créneaux
             Row(
               children: [
-                Chip(
-                    label: Text(
-                      "Cuisinier",
-                      style: TextStyle(color: AppColors().chipsetTextColor),
-                    ),
-                    visualDensity: VisualDensity.comfortable),
+                Expanded(
+                  flex: 1,
+                  child: Chip(
+                      label: Wrap(
+                        children: [
+                          Text(
+                            "${shift!.postName}",
+                            overflow: TextOverflow.fade,
+                            style:
+                                TextStyle(color: AppColors().chipsetTextColor),
+                          ),
+                        ],
+                      ),
+                      visualDensity: VisualDensity.comfortable),
+                ),
                 SizedBox(
                   width: 5,
                 ),
-                RichText(
-                  text: TextSpan(
-                      text:
-                          "${double.parse(shift!.buyPrice!.toString()).round()}\$ / H ",
-                      style: TextStyle(color: Colors.black),
-                      children: [
-                        if (shift!.bonus! != 0)
-                          TextSpan(
-                              text: "+ ${shift!.bonus!}\$ / H ",
-                              style: TextStyle(color: Colors.green))
-                      ]),
-                ),
-                Spacer(),
-                Text(
-                  "${shift!.formatDate(shift!.startAt!)} - ${shift!.formatDate(shift!.endAt!)}",
-                  style: TextStyle(color: Colors.red),
+                Expanded(
+                  flex: 2,
+                  child: Row(
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                            text:
+                                "${double.parse(shift!.buyPrice!.toString()).round()}\$ / H ",
+                            style: TextStyle(color: Colors.black),
+                            children: [
+                              if (shift!.bonus! != 0)
+                                TextSpan(
+                                    text: "+ ${shift!.bonus!}\$ / H ",
+                                    style: TextStyle(color: Colors.green))
+                            ]),
+                      ),
+                      Spacer(),
+                      Text(
+                        "${shift!.formatDate(shift!.startAt!)} - ${shift!.formatDate(shift!.endAt!)}",
+                        style: TextStyle(color: Colors.red),
+                      )
+                    ],
+                  ),
                 )
               ],
             )
